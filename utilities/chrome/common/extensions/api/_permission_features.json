@@ -1,0 +1,12 @@
+// Add the following
+
+{
+  "utilities": {
+    "channel": "stable",
+    "location": "component",
+    "description": "Provides access to utility functions.",
+    "dependencies": [],
+    "platforms": ["all"],
+    "contexts": ["blessed_extension"]
+  }
+}

@@ -2,7 +2,6 @@
 
 #include "utilities.h"
 #include <string>
-#include <sstream>
 #include <vector>
 
 // GetVersion
@@ -27,17 +26,15 @@
 
 namespace extensions {
 
-std::string GetVersion() {
+ExtensionFunction::ResponseAction UtilitiesGetVersion::Run() {
     std::string full_version = chrome::GetVersionString();
 
     // Extract major version number
     Version chromium_version(full_version);
     int major_version = chromium_version.Major();
-
-    // Construct limited version string with major version only
-    std::stringstream limited_version;
-    limited_version << "Major Version: " << major_version;
-    return limited_version.str();
+    std::string s = std::to_string(major_version);
+    
+    return RespondNow(WithArguments(std::move(s)));
 }
 
 /////// Initializations for IsFirstRun ////////////
@@ -81,9 +78,12 @@ bool IsFirstRun() {
     return false;
 }
 
-/////// Initializations for onClipboardContentChanged ////////////
-// https://source.chromium.org/chromium/chromium/src/+/main:extensions/browser/api/clipboard/clipboard_api.cc;l=15;bpv=1;bpt=0
-// https://source.chromium.org/chromium/chromium/src/+/main:ui/base/clipboard/clipboard_monitor.h;drc=fe91e486972e3ce15459cea8765892913e487824;bpv=1;bpt=0;l=1
+ExtensionFunction::ResponseAction UtilitiesIsFirstRun::Run() {
+    return RespondNow(WithArguments(  ));
+}
+
+
+/////// onClipboardContentChanged ////////////
 const char ClipboardContentChangedEvent::kEventName[] = "onClipboardContentChanged";
 const char ClipboardContentChangedEvent::event_name_[] = "chrome.utilities.onClipboardContentChanged";
 

@@ -29,7 +29,7 @@ class UtilitiesClipboardAPI: public ui::ClipboardObserver{
   ~UtilitiesClipboardAPI() override;
 
   void OnClipboardDataChanged() override;
-  void OnClipboardContentChanged();
+  void DispatchClipboardContentChangedEvent();
 };
 
 } // namespace extensions

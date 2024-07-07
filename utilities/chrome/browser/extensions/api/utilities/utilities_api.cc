@@ -15,6 +15,9 @@
 #include "components/prefs/pref_registry_simple.h"
 
 // 
+#include "chrome/browser/extensions/api/utilities/utilities_api.h"
+#include "content/public/browser/clipboard_monitor.h"
+#include "extensions/browser/event_router.h"
 
 namespace utilities {
 std::string GetVersion() {
@@ -72,8 +75,7 @@ bool IsFirstRun() {
 }
 
 /////// Initializations for onClipboardContentChanged ////////////
+https://source.chromium.org/chromium/chromium/src/+/main:extensions/browser/api/clipboard/clipboard_api.cc;l=15;bpv=1;bpt=0
+https://source.chromium.org/chromium/chromium/src/+/main:ui/base/clipboard/clipboard_monitor.h;drc=fe91e486972e3ce15459cea8765892913e487824;bpv=1;bpt=0;l=1
 
-void onClipboardContentChanged(const ClipboardContentChangedCallback& callback) {
-
-}
 }  // namespace utilities

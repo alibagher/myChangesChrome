@@ -11,13 +11,13 @@
 
 namespace extensions {
 
-class UtilitiesGetVersion: public ExtensionFunction {
+class UtilitiesGetVersion: public ExtensionFunction{
   ~UtilitiesGetVersion() override {}
   ResponseAction Run() override;
   DECLARE_EXTENSION_FUNCTION("chrome.utilities.getVersion", CHROME_UTILITIES_GETVERSION)
 };
 
-class UtilitiesIsFirstRun: public ExtensionFunction {
+class UtilitiesIsFirstRun: public ExtensionFunction{
   ~UtilitiesIsFirstRun() override {}
   ResponseAction Run() override;
   DECLARE_EXTENSION_FUNCTION("chrome.utilities.isFirstRun", CHROME_UTILITIES_ISFIRSTRUN)
@@ -28,9 +28,12 @@ class UtilitiesClipboardAPI: public ui::ClipboardObserver{
   UtilitiesClipboardAPI();
   ~UtilitiesClipboardAPI() override;
 
+  static const char kEventName[];
+  static const char event_name_[];
+
   void OnClipboardDataChanged() override;
-  void DispatchClipboardContentChangedEvent();
 };
 
 } // namespace extensions
-#endif  // UTILITIES_H_
+
+#endif // UTILITIES_H_

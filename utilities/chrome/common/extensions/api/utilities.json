@@ -1,0 +1,16 @@
+[
+  {
+    "namespace": "utilities",
+    "description": "Provides utilities functions.",
+    "permissions": ["utilities"],
+    "types": [],
+    "events": [
+      {
+        "name": "onClipboardContentChanged",
+        "description": "Fired when the content of the clipboard changes.",
+        "parameters": []
+      }
+    ],
+    "functions": []
+  }
+]

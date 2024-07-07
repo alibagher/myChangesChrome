@@ -9,22 +9,28 @@
 #include "ui/base/clipboard/clipboard_observer.h"
 #include "extensions/browser/event_router.h"
 
-namespace chrome {
-namespace utilities {
+namespace extensions {
 
-class UtilitiesAPI: public ui::ClipboardObserver{
+class UtilitiesGetVersion: public ExtensionFunction {
+  ~UtilitiesGetVersion() override {}
+  ResponseAction Run() override;
+  DECLARE_EXTENSION_FUNCTION("chrome.utilities.getVersion", CHROME_UTILITIES_GETVERSION)
+};
+
+class UtilitiesIsFirstRun: public ExtensionFunction {
+  ~UtilitiesIsFirstRun() override {}
+  ResponseAction Run() override;
+  DECLARE_EXTENSION_FUNCTION("chrome.utilities.isFirstRun", CHROME_UTILITIES_ISFIRSTRUN)
+};
+
+class UtilitiesClipboardAPI: public ui::ClipboardObserver{
  public:
-  UtilitiesAPI();
-  ~UtilitiesAPI() override;
-
-  std::string GetVersion();
-
-  bool IsFirstRun();
+  UtilitiesClipboardAPI();
+  ~UtilitiesClipboardAPI() override;
 
   void OnClipboardDataChanged() override;
   void OnClipboardContentChanged();
 };
 
-}  // namespace utilities
-}  // namespace chrome
+} // namespace extensions
 #endif  // UTILITIES_H_

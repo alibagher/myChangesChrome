@@ -41,6 +41,8 @@ ExtensionFunction::ResponseAction UtilitiesGetVersion::Run() {
 
 const char kFirstLaunchKey[] = "first_launch";
 
+// TODO: put the initializations into its own class and call from startup. 
+
 void RegisterLocalStatePrefs(PrefRegistrySimple* registry) {
     // Register the preference with a default value of false
     registry->RegisterBooleanPref(kFirstLaunchKey, false);
@@ -65,7 +67,6 @@ void InitializeLocalState(PrefService* local_state) {
 }
 
 bool IsFirstRun() {
-    // Ensure the preference is registered
     RegisterLocalStatePrefs(local_state->registry());
 
     bool isFirstLaunch = local_state->GetBoolean(kFirstLaunchKey);
@@ -79,7 +80,17 @@ bool IsFirstRun() {
 }
 
 ExtensionFunction::ResponseAction UtilitiesIsFirstRun::Run() {
-    return RespondNow(WithArguments(  ));
+    RegisterLocalStatePrefs(local_state->registry());
+
+    bool isFirstLaunch = local_state->GetBoolean(kFirstLaunchKey);
+    if (isFirstLaunch) {
+        LOG(INFO) << "This is the first launch of the browser.";
+        return RespondNow(WithArguments(true));
+    }
+    
+    LOG(INFO) << "This is not the first launch.";
+    
+    return RespondNow(WithArguments(false));
 }
 
 

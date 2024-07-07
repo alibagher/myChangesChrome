@@ -1,0 +1,15 @@
+// Add to the '_api_features.json' file the follwowing:
+
+{
+  "utilities": [{
+    "channel": "stable",
+    "extension_types": ["extension", "legacy_packaged_app"],
+    "contexts": ["privileged_extension"],
+    "default_parent": true
+  }],
+  "utilities.onClipboardContentChanged": {
+    "dependencies": ["utilities"],
+    "contexts": ["privileged_extension"],
+    "description": "Fired when the content of the clipboard changes."
+  }
+}

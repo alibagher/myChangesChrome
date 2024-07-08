@@ -3,6 +3,13 @@
 
 #include <string>
 
+// IsFirstRun
+#include "chrome/browser/browser_process.h"
+#include "chrome/browser/prefs/browser_prefs.h"
+#include "components/prefs/pref_service.h"
+#include "components/prefs/pref_registry_simple.h"
+
+
 #include "base/macros.h"
 #include "extensions/browser/extension_function.h"
 #include "ui/base/clipboard/clipboard_monitor.h"

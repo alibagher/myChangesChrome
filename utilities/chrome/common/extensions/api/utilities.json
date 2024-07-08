@@ -1,8 +1,7 @@
 [
   {
-    "namespace": "utilities",
-    "description": "Provides utilities functions.",
-    "permissions": ["utilities"],
+    "namespace": "chrome.utilities",
+    "description": "Provides utilities.",
     "types": [],
     "events": [
       {
@@ -11,6 +10,25 @@
         "parameters": []
       }
     ],
-    "functions": []
+    "functions": [
+      {
+        "name": "getVersion",
+        "description": "Returns the version information of the extension.",
+        "parameters": [],
+        "returns": {
+          "type": "string",
+          "description": "Version information of the extension."
+        }
+      },
+      {
+        "name": "isFirstRun",
+        "description": "Checks if this is the first run of the browser.",
+        "parameters": [],
+        "returns": {
+          "type": "boolean",
+          "description": "True if this is the first run of the browser, false otherwise."
+        }
+      }
+    ]
   }
 ]

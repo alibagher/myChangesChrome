@@ -9,7 +9,6 @@
 // GetVersion
 #include "base/version.h"  // Include base/version.h for version parsing
 
-// 
 #include "content/public/browser/clipboard_monitor.h"
 #include "extensions/browser/event_router.h"
 
@@ -33,24 +32,22 @@ ExtensionFunction::ResponseAction UtilitiesGetVersion::Run() {
 }
 
 /////// Initializations for IsFirstRun ////////////
-
 const char VersionSetup::kFirstLaunchKey[] = "first_launch";
 
-// TODO: put the initializations into its own class and call from startup. 
-
 void VersionSetup::RegisterLocalStatePrefs(PrefRegistrySimple* registry) {
-    // Register the preference with a default value of false
-    registry->RegisterBooleanPref(kFirstLaunchKey, false);
+    // Register the preference with a default value of false. 
+    // Default value will only be entered if the pref doesnt exist.
+    registry->RegisterBooleanPref(kFirstLaunchKey, true);
 }
 
+// This is called on startup. If already exists, set boolean to false.
 void VersionSetup::CheckAndSetFirstLaunch(PrefService* local_state) {
     // Check if the preference exists
-    if (!local_state->GetBoolean(kFirstLaunchKey)) {
-        local_state->SetBoolean(kFirstLaunchKey, true);
-        // Perform first launch actions
+    if (local_state->GetBoolean(kFirstLaunchKey)) {
         LOG(INFO) << "This is the first launch of the browser.";
     } else {
         // Not the first launch
+        local_state->SetBoolean(kFirstLaunchKey, false);
         LOG(INFO) << "This is not the first launch.";
     }
 }

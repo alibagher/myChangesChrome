@@ -1,6 +1,16 @@
 # Task: Chromium Extension APIs
 Task for RedBrick (Shift) Lead Software Developer (Chromium).
 
+# BUILD DEPS
+Only need to add dependency to 'chrome/browser/extensions/BUILD.gn' because higher deps depend on this file, so utilities will be included.
+
+# Chromium version
+62.0.3202.66
+
+# platform
+MacOS
+
+
 # isFirstRun
 The official documentation (https://www.chromium.org/developers/how-tos/getting-around-the-chrome-source-code/#application-startup ) clearly indicates that on startup of the browser, the BrowserMain function in `chrome/browser/browser_main.cc` does common browser initialization. This is a good location to place the initialization of `isFirstRun`, which is to write to local file a boolean indicating first run or no.
 
@@ -14,10 +24,5 @@ the following on line 1003:
 ```
 
 
-"Compilation steps can be selective, since not all APIs need to be included in all compilation steps. For instance, some APIs are implemented entirely in the renderer, and thus do not need to have strong types or function registration generated. See the JSON Schema Compiler for more information." https://chromium.googlesource.com/chromium/src/+/main/chrome/common/extensions/api/schemas.md#compilation
-
-The above quote says that APIs implemented in the renxdered do not need to have function registration generated, but utilities is in the browser, and so it does need one.
-
-
-# BUILD DEPS
-Only need to add dependency to 'chrome/browser/extensions/BUILD.gn' because higher deps depend on this file, so utilities will be included. 
+# onClipboardContentChanged
+I used the ui::ClipboardObserver class and overrided the OnClipboardDataChanged method which fires when clipboard data is changed. This then broadcasts the event (chrome.utilities.onClipboardContentChanged).

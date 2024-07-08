@@ -1,6 +1,6 @@
 [
   {
-    "namespace": "chrome.utilities",
+    "namespace": "utilities",
     "description": "Provides utilities.",
     "types": [],
     "events": [

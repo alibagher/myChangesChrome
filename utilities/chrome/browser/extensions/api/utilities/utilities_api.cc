@@ -7,12 +7,6 @@
 // GetVersion
 #include "base/version.h"  // Include base/version.h for version parsing
 
-// IsFirstRun
-#include "chrome/browser/browser_process.h"
-#include "chrome/browser/prefs/browser_prefs.h"
-#include "components/prefs/pref_service.h"
-#include "components/prefs/pref_registry_simple.h"
-
 // 
 #include "chrome/browser/extensions/api/utilities/utilities_api.h"
 #include "content/public/browser/clipboard_monitor.h"

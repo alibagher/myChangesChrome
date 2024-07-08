@@ -11,6 +11,16 @@
 
 namespace extensions {
 
+class VersionSetup {
+public:
+  void InitializeLocalState(PrefService* local_state);
+private:
+  static const char kFirstLaunchKey[];
+
+  void RegisterLocalStatePrefs(PrefRegistrySimple* registry); 
+  void CheckAndSetFirstLaunch(PrefService* local_state);
+}
+
 class UtilitiesGetVersion: public ExtensionFunction{
   ~UtilitiesGetVersion() override {}
   ResponseAction Run() override;

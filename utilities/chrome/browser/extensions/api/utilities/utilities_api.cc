@@ -1,5 +1,7 @@
 // Located under "src/chrome/browser/extensions/api/utilities"
 
+#include "chrome/browser/extensions/api/utilities/utilities_api.h"
+
 #include "utilities.h"
 #include <string>
 #include <vector>
@@ -8,7 +10,6 @@
 #include "base/version.h"  // Include base/version.h for version parsing
 
 // 
-#include "chrome/browser/extensions/api/utilities/utilities_api.h"
 #include "content/public/browser/clipboard_monitor.h"
 #include "extensions/browser/event_router.h"
 
